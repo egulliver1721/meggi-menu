@@ -1,0 +1,11 @@
+.app-container {
+  max-width: 600px;
+  max-height: 1000px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+header {
+  text-align: left;
+  padding-left: 20px;
+}

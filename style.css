@@ -1,11 +1,105 @@
+.center {
+  text-align: center;
+}
+
 .app-container {
   max-width: 600px;
-  max-height: 1000px;
-  border: 1px solid black;
+  height: 850px;
   margin: 0 auto;
+  font-family: "League Spartan", sans-serif;
+  background-color: rgba(231, 231, 231, 0.269);
 }
 
 header {
   text-align: left;
-  padding-left: 20px;
+  background: black;
+  color: white;
+  padding: 30px 0 30px 20px;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+section {
+  padding: 60px;
+}
+
+.item-section {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-rows: 46px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.item-icon {
+  max-width: 30px;
+  padding: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.item-name {
+  padding-left: 10px;
+  line-height: 46px;
+}
+
+.icon-add {
+  max-width: 20px;
+  padding: 13px;
+  vertical-align: middle;
+}
+
+.icon-add:hover {
+  cursor: pointer;
+}
+
+/*  order summary */
+
+.order-summary {
+  margin-top: 200px;
+  padding-left: 40px;
+}
+
+/* .no-items {
+  display: none;
+} */
+
+.item-added {
+  display: flex;
+}
+
+.item-added-name {
+  font-weight: 700;
+}
+
+.remove {
+  padding-left: 10px;
+  padding-top: 9px;
+  opacity: 0.7;
+  font-size: 11px;
+}
+
+.remove:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.order-btn {
+  display: block;
+  margin: 0 auto;
+  background: black;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  font-weight: 700;
 }

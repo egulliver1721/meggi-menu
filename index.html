@@ -5,15 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Meggi</title>
   </head>
+
   <body>
     <div class="app-container">
       <header>
-        <div class="logo-text">MEGGI.</div>
-        <div class="header-description">Build a custom nappy bag tag</div>
+        <div>
+          <h1 class="logo-text">MEGGI.</h1>
+        </div>
+        <h2 class="header-description">Build a custom nappy bag tag</h2>
       </header>
+      <section>
+        <div class="item-section" id="item-section"></div>
+        <div class="order-summary no-items" id="order-summary">
+          <h3 class="center">Your order</h3>
+          <div class="item-summary" id="item-summary"></div>
+          <hr />
+          <h4>Total price:</h4>
+          <button class="order-btn" id="order-btn">Complete order</button>
+          <button class="clear-cart" id="clear-cart-btn">Clear cart</button>
+        </div>
+      </section>
     </div>
-    <script src="index.js"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>

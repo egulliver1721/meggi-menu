@@ -26,6 +26,13 @@ document.addEventListener("click", function (e) {
   // }
 });
 
+let clearBtn = document.getElementById("clear-cart-btn");
+clearBtn.addEventListener("click", function () {
+  localStorage.clear();
+  addedToCartArray = [];
+  renderCart();
+});
+
 function handleAddClick(itemId) {
   const targetItemObj = tagData.filter(function (item) {
     return item.uuid === itemId;
@@ -72,7 +79,11 @@ function render() {
 }
 
 function renderCart(cartHtml) {
-  document.getElementById("item-summary").innerHTML = cartHtml;
+  if (addedToCartArray.length > 0) {
+    document.getElementById("item-summary").innerHTML = cartHtml;
+  } else {
+    document.getElementById("item-summary").innerHTML = ``;
+  }
 }
 
 render();

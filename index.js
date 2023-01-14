@@ -1,7 +1,7 @@
 import { tagData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 let addedToCartArray = [];
-let removeBtn = document.getElementById("remove-btn");
+let clearBtn = document.getElementById("clear-cart-btn");
 const cartFromLocalStorage = JSON.parse(
   localStorage.getItem("addedToCartArray")
 );
@@ -12,6 +12,14 @@ if (cartFromLocalStorage) {
 }
 console.log(cartFromLocalStorage);
 
+function updateCartFromLocalStorage() {
+  if (cartFromLocalStorage) {
+    addedToCartArray = cartFromLocalStorage;
+    cartHtml();
+  }
+  console.log(cartFromLocalStorage);
+}
+
 document.addEventListener("click", function (e) {
   if (e.target.dataset.add) {
     handleAddClick(e.target.dataset.add);
@@ -20,17 +28,6 @@ document.addEventListener("click", function (e) {
   if (e.target.dataset.remove) {
     handleRemoveClick(e.target.dataset.remove);
   }
-
-  // if (addedToCartArray.length > 0) {
-  //   document.getElementById("order-summary").classList.remove("no-items");
-  // }
-});
-
-let clearBtn = document.getElementById("clear-cart-btn");
-clearBtn.addEventListener("click", function () {
-  localStorage.clear();
-  addedToCartArray = [];
-  renderCart();
 });
 
 function handleAddClick(itemId) {
@@ -43,20 +40,15 @@ function handleAddClick(itemId) {
   }
   localStorage.setItem("addedToCartArray", JSON.stringify(addedToCartArray));
   cartHtml();
+  updateCartFromLocalStorage();
 }
 
 function handleRemoveClick(e) {
   const itemToRemove = e;
   console.log(e);
-  console.log(cartFromLocalStorage.indexOf(itemToRemove));
-  // console.log(cartFromLocalStorage.indexOf("targetItemObj"));
-
-  // if (!cartFromLocalStorage.includes(targetItemObj.item)) {
-  //   console.log(cartFromLocalStorage.indexOf(targetItemObj.item));
-  // }
+  let indexOfItem = cartFromLocalStorage.indexOf(itemToRemove);
+  console.log(indexOfItem);
 }
-
-localStorage.removeItem("item");
 
 function cartHtml() {
   let cartHtml = ``;
@@ -90,6 +82,14 @@ function renderCart(cartHtml) {
     document.getElementById("item-summary").innerHTML = ``;
   }
 }
+
+function clearCart() {
+  localStorage.clear();
+  addedToCartArray = [];
+  renderCart();
+}
+
+clearBtn.addEventListener("click", clearCart);
 
 render();
 

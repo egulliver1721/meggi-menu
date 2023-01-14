@@ -9,16 +9,20 @@ const cartFromLocalStorage = JSON.parse(
 if (cartFromLocalStorage) {
   addedToCartArray = cartFromLocalStorage;
   cartHtml();
-}
-console.log(cartFromLocalStorage);
-
-function updateCartFromLocalStorage() {
-  if (cartFromLocalStorage) {
-    addedToCartArray = cartFromLocalStorage;
-    cartHtml();
-  }
   console.log(cartFromLocalStorage);
+} else {
+  console.log("nothing in cart");
 }
+
+// function updateCartFromLocalStorage() {
+//   if (cartFromLocalStorage) {
+//     addedToCartArray = cartFromLocalStorage;
+//     cartHtml();
+//     console.log(cartFromLocalStorage);
+//   } else {
+//     console.log("nothing in cart function");
+//   }
+// }
 
 document.addEventListener("click", function (e) {
   if (e.target.dataset.add) {
@@ -39,8 +43,8 @@ function handleAddClick(itemId) {
     addedToCartArray.push(targetItemObj.item);
   }
   localStorage.setItem("addedToCartArray", JSON.stringify(addedToCartArray));
+  console.log(addedToCartArray);
   cartHtml();
-  updateCartFromLocalStorage();
 }
 
 function handleRemoveClick(e) {
@@ -58,19 +62,6 @@ function cartHtml() {
   renderCart(cartHtml);
 }
 
-function getAppHtml() {
-  let appHtml = ``;
-
-  tagData.forEach(function (item) {
-    appHtml += `<img src="${item.icon}" class="item-icon" alt="" />
-        <div class="item-name">${item.item}</div>
-        <img src="add.png" class="icon-add" data-add="${item.uuid}" alt="" />
-          `;
-  });
-
-  return appHtml;
-}
-
 function render() {
   document.getElementById("item-section").innerHTML = getAppHtml();
 }
@@ -83,13 +74,27 @@ function renderCart(cartHtml) {
   }
 }
 
+clearBtn.addEventListener("click", clearCart);
+
 function clearCart() {
   localStorage.clear();
   addedToCartArray = [];
+  console.log(addedToCartArray);
   renderCart();
 }
 
-clearBtn.addEventListener("click", clearCart);
+function getAppHtml() {
+  let appHtml = ``;
+
+  tagData.forEach(function (item) {
+    appHtml += `<img src="${item.icon}" class="item-icon" alt="" />
+        <div class="item-name">${item.item}</div>
+        <img src="add.png" class="icon-add" data-add="${item.uuid}" alt="" />
+          `;
+  });
+
+  return appHtml;
+}
 
 render();
 

@@ -46,9 +46,14 @@ function handleAddClick(itemId) {
 }
 
 function handleRemoveClick(e) {
-  const targetItemObj = tagData.filter(function (item) {
-    return item.uuid === itemId;
-  })[0];
+  const itemToRemove = e;
+  console.log(e);
+  console.log(cartFromLocalStorage.indexOf(itemToRemove));
+  // console.log(cartFromLocalStorage.indexOf("targetItemObj"));
+
+  // if (!cartFromLocalStorage.includes(targetItemObj.item)) {
+  //   console.log(cartFromLocalStorage.indexOf(targetItemObj.item));
+  // }
 }
 
 localStorage.removeItem("item");
@@ -56,7 +61,7 @@ localStorage.removeItem("item");
 function cartHtml() {
   let cartHtml = ``;
   addedToCartArray.forEach(function (item) {
-    cartHtml += `<p>${item} <span class="remove" data-remove="${item.uuid}" id="remove-btn"> remove </span> </p>`;
+    cartHtml += `<p>${item} <span class="remove" data-remove="${item}" id="remove-btn"> remove </span> </p>`;
   });
   renderCart(cartHtml);
 }

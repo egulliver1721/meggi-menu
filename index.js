@@ -14,16 +14,6 @@ if (cartFromLocalStorage) {
   console.log("nothing in cart");
 }
 
-// function updateCartFromLocalStorage() {
-//   if (cartFromLocalStorage) {
-//     addedToCartArray = cartFromLocalStorage;
-//     cartHtml();
-//     console.log(cartFromLocalStorage);
-//   } else {
-//     console.log("nothing in cart function");
-//   }
-// }
-
 document.addEventListener("click", function (e) {
   if (e.target.dataset.add) {
     handleAddClick(e.target.dataset.add);
@@ -50,8 +40,7 @@ function handleAddClick(itemId) {
 function handleRemoveClick(e) {
   const itemToRemove = e;
   console.log(e);
-  let indexOfItem = cartFromLocalStorage.indexOf(itemToRemove);
-  console.log(indexOfItem);
+  console.log(cartFromLocalStorage.indexOf(itemToRemove));
 }
 
 function cartHtml() {
